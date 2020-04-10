@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+    stages {
+        stage('Git-Checkout'){
+            steps{
+                echo 'Checingout Git'
+                git 'https://github.com/SandeepnGithub/jenkinslearning.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                echo 'Building Scripted_Pipelline..'
+                sh label: '', script: 'cd ..'
+                echo 'Building Scripted_Pipelline..'
+                sh label: '', script: 'pwd'
+                sh label: '', script: 'ls'
+                sh label: '', script: 'chmod +x ./build.sh'
+            }
+        }
+    }
+    post{
+        always{
+            echo 'Always Run this script'
+        }
+    }
+}
